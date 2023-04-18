@@ -1,31 +1,24 @@
 package com.binarywang.demo.wx.mp.controller;
 
-import java.io.File;
-import java.io.IOException;
-import java.util.Iterator;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.multipart.MultipartHttpServletRequest;
-import org.springframework.web.multipart.commons.CommonsMultipartResolver;
-
-import com.google.common.collect.Lists;
-import com.google.common.io.Files;
-
 import cn.binarywang.wx.miniapp.api.WxMaService;
 import cn.binarywang.wx.miniapp.constant.WxMaConstants;
 import cn.binarywang.wx.miniapp.util.WxMaConfigHolder;
+import com.google.common.collect.Lists;
+import com.google.common.io.Files;
 import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.common.bean.result.WxMediaUploadResult;
 import me.chanjar.weixin.common.error.WxErrorException;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartHttpServletRequest;
+import org.springframework.web.multipart.commons.CommonsMultipartResolver;
+
+import javax.servlet.http.HttpServletRequest;
+import java.io.File;
+import java.io.IOException;
+import java.util.Iterator;
+import java.util.List;
 
 /**
  * <pre>
@@ -67,7 +60,7 @@ public class WxMaMediaController {
             try {
                 MultipartFile file = multiRequest.getFile(it.next());
                 File newFile = new File(Files.createTempDir(), file.getOriginalFilename());
-                log.info("filePath is ：" + newFile.toString());
+                log.info("filePath is ：" + newFile);
                 file.transferTo(newFile);
                 WxMediaUploadResult uploadResult = wxMaService.getMediaService()
                         .uploadMedia(WxMaConstants.KefuMsgType.IMAGE, newFile);

@@ -12,7 +12,7 @@ public class TextBuilder extends AbstractBuilder {
 
     @Override
     public WxMpXmlOutMessage build(String content, WxMpXmlMessage wxMessage,
-            WxMpService service) {
+                                   WxMpService service) {
         WxMpXmlOutTextMessage m = WxMpXmlOutMessage.TEXT().content(content)
                 .fromUser(wxMessage.getToUser()).toUser(wxMessage.getFromUser())
                 .build();

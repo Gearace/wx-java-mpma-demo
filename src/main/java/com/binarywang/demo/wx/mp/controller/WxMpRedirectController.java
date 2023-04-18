@@ -1,23 +1,22 @@
 package com.binarywang.demo.wx.mp.controller;
 
+import lombok.AllArgsConstructor;
+import me.chanjar.weixin.common.bean.WxOAuth2UserInfo;
+import me.chanjar.weixin.common.bean.oauth2.WxOAuth2AccessToken;
+import me.chanjar.weixin.common.error.WxErrorException;
+import me.chanjar.weixin.mp.api.WxMpService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
-import lombok.AllArgsConstructor;
-import me.chanjar.weixin.common.bean.WxOAuth2UserInfo;
-import me.chanjar.weixin.common.bean.oauth2.WxOAuth2AccessToken;
-import me.chanjar.weixin.common.error.WxErrorException;
-import me.chanjar.weixin.mp.api.WxMpService;
-
 /**
  * @author Edward
  */
 @AllArgsConstructor
 @Controller
-@RequestMapping("/wx/redirect/{appid}")
+@RequestMapping("/wxmp/redirect/{appid}")
 public class WxMpRedirectController {
     private final WxMpService wxService;
 

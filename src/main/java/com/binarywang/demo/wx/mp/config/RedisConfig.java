@@ -1,5 +1,9 @@
 package com.binarywang.demo.wx.mp.config;
 
+import com.binarywang.demo.wx.mp.config.properties.RedissonProperties;
+import com.binarywang.demo.wx.mp.handler.KeyPrefixHandler;
+import com.fasterxml.jackson.databind.ObjectMapper;
+import lombok.extern.slf4j.Slf4j;
 import org.redisson.codec.JsonJacksonCodec;
 import org.redisson.spring.starter.RedissonAutoConfigurationCustomizer;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -7,12 +11,6 @@ import org.springframework.boot.context.properties.EnableConfigurationProperties
 import org.springframework.cache.annotation.EnableCaching;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-
-import com.binarywang.demo.wx.mp.config.properties.RedissonProperties;
-import com.binarywang.demo.wx.mp.handler.KeyPrefixHandler;
-import com.fasterxml.jackson.databind.ObjectMapper;
-
-import lombok.extern.slf4j.Slf4j;
 
 /**
  * redis配置

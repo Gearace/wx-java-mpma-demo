@@ -1,12 +1,11 @@
 package com.binarywang.demo.wx.mp.config.properties;
 
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import org.redisson.config.ReadMode;
 import org.redisson.config.SubscriptionMode;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
-
-import lombok.Data;
-import lombok.NoArgsConstructor;
 
 /**
  * Redisson 配置属性

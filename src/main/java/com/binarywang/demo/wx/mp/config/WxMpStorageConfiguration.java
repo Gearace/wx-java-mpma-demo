@@ -1,20 +1,9 @@
 package com.binarywang.demo.wx.mp.config;
 
-import java.util.Set;
-
-import org.apache.commons.lang3.StringUtils;
-import org.redisson.api.RedissonClient;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.data.redis.core.StringRedisTemplate;
-
 import com.binarywang.spring.starter.wxjava.mp.enums.StorageType;
 import com.binarywang.spring.starter.wxjava.mp.properties.RedisProperties;
 import com.binarywang.spring.starter.wxjava.mp.properties.WxMpProperties;
 import com.google.common.collect.Sets;
-
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import me.chanjar.weixin.common.redis.JedisWxRedisOps;
@@ -25,10 +14,19 @@ import me.chanjar.weixin.mp.config.WxMpHostConfig;
 import me.chanjar.weixin.mp.config.impl.WxMpDefaultConfigImpl;
 import me.chanjar.weixin.mp.config.impl.WxMpRedisConfigImpl;
 import me.chanjar.weixin.mp.config.impl.WxMpRedissonConfigImpl;
+import org.apache.commons.lang3.StringUtils;
+import org.redisson.api.RedissonClient;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
+import org.springframework.context.ApplicationContext;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.data.redis.core.StringRedisTemplate;
 import redis.clients.jedis.JedisPool;
 import redis.clients.jedis.JedisPoolAbstract;
 import redis.clients.jedis.JedisPoolConfig;
 import redis.clients.jedis.JedisSentinelPool;
+
+import java.util.Set;
 
 /**
  * 微信公众号存储策略自动配置.

@@ -1,21 +1,14 @@
 package com.binarywang.demo.wx.mp.controller;
 
-import org.apache.commons.lang3.StringUtils;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.RestController;
-
 import lombok.RequiredArgsConstructor;
 import me.chanjar.weixin.mp.api.WxMpMessageRouter;
 import me.chanjar.weixin.mp.api.WxMpService;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlMessage;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlOutMessage;
+import org.apache.commons.lang3.StringUtils;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequiredArgsConstructor
@@ -26,14 +19,14 @@ public class WxMpPortalController {
 
     private final WxMpMessageRouter wxMpMessageRouter;
 
-    private Logger log = LoggerFactory.getLogger(this.getClass());
+    private final Logger log = LoggerFactory.getLogger(this.getClass());
 
     @GetMapping(produces = "text/plain;charset=utf-8")
     public String authGet(@PathVariable String appid,
-            @RequestParam(name = "signature", required = false) String signature,
-            @RequestParam(name = "timestamp", required = false) String timestamp,
-            @RequestParam(name = "nonce", required = false) String nonce,
-            @RequestParam(name = "echostr", required = false) String echostr) {
+                          @RequestParam(name = "signature", required = false) String signature,
+                          @RequestParam(name = "timestamp", required = false) String timestamp,
+                          @RequestParam(name = "nonce", required = false) String nonce,
+                          @RequestParam(name = "echostr", required = false) String echostr) {
 
         log.info("\n接收到来自微信服务器的认证消息：[{}, {}, {}, {}]", signature,
                 timestamp, nonce, echostr);
@@ -54,15 +47,15 @@ public class WxMpPortalController {
 
     @PostMapping(produces = "application/xml; charset=UTF-8")
     public String post(@PathVariable String appid,
-            @RequestBody String requestBody,
-            @RequestParam("signature") String signature,
-            @RequestParam("timestamp") String timestamp,
-            @RequestParam("nonce") String nonce,
-            @RequestParam("openid") String openid,
-            @RequestParam(name = "encrypt_type", required = false) String encType,
-            @RequestParam(name = "msg_signature", required = false) String msgSignature) {
+                       @RequestBody String requestBody,
+                       @RequestParam("signature") String signature,
+                       @RequestParam("timestamp") String timestamp,
+                       @RequestParam("nonce") String nonce,
+                       @RequestParam("openid") String openid,
+                       @RequestParam(name = "encrypt_type", required = false) String encType,
+                       @RequestParam(name = "msg_signature", required = false) String msgSignature) {
         log.info("\n接收微信请求：[openid=[{}], [signature=[{}], encType=[{}], msgSignature=[{}],"
-                + " timestamp=[{}], nonce=[{}], requestBody=[\n{}\n] ",
+                        + " timestamp=[{}], nonce=[{}], requestBody=[\n{}\n] ",
                 openid, signature, encType, msgSignature, timestamp, nonce, requestBody);
 
         if (!this.wxMpService.switchover(appid)) {

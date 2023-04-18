@@ -1,13 +1,7 @@
 package com.binarywang.demo.wx.mp.handler;
 
-import java.util.Map;
-
-import org.apache.commons.lang3.StringUtils;
-import org.springframework.stereotype.Component;
-
 import com.binarywang.demo.wx.mp.builder.TextBuilder;
 import com.binarywang.demo.wx.mp.utils.JsonUtils;
-
 import me.chanjar.weixin.common.api.WxConsts.XmlMsgType;
 import me.chanjar.weixin.common.error.WxErrorException;
 import me.chanjar.weixin.common.session.WxSessionManager;
@@ -15,6 +9,10 @@ import me.chanjar.weixin.mp.api.WxMpMessageHandler;
 import me.chanjar.weixin.mp.api.WxMpService;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlMessage;
 import me.chanjar.weixin.mp.bean.message.WxMpXmlOutMessage;
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.stereotype.Component;
+
+import java.util.Map;
 
 /**
  * @author <a href="https://github.com/binarywang">Binary Wang</a>
@@ -24,8 +22,8 @@ public class WxMpMsgHandler implements WxMpMessageHandler {
 
     @Override
     public WxMpXmlOutMessage handle(WxMpXmlMessage wxMessage,
-            Map<String, Object> context, WxMpService weixinService,
-            WxSessionManager sessionManager) {
+                                    Map<String, Object> context, WxMpService weixinService,
+                                    WxSessionManager sessionManager) {
 
         if (!wxMessage.getMsgType().equals(XmlMsgType.EVENT)) {
             // TODO 可以选择将消息保存到本地
@@ -35,7 +33,7 @@ public class WxMpMsgHandler implements WxMpMessageHandler {
         try {
             if (StringUtils.startsWithAny(wxMessage.getContent(), "你好", "客服")
                     && weixinService.getKefuService().kfOnlineList()
-                            .getKfOnlineList().size() > 0) {
+                    .getKfOnlineList().size() > 0) {
                 return WxMpXmlOutMessage.TRANSFER_CUSTOMER_SERVICE()
                         .fromUser(wxMessage.getToUser())
                         .toUser(wxMessage.getFromUser()).build();
