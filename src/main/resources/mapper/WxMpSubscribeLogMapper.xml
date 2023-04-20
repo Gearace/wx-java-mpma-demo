@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.binarywang.demo.wx.mapper.WxMpSubscribeLogMapper">
+  <resultMap id="BaseResultMap" type="com.binarywang.demo.wx.model.WxMpSubscribeLog">
+    <!--@mbg.generated-->
+    <!--@Table wx_mp_subscribe_log-->
+    <id column="id" jdbcType="BIGINT" property="id" />
+    <result column="user_id" jdbcType="BIGINT" property="userId" />
+    <result column="unionid" jdbcType="VARCHAR" property="unionid" />
+    <result column="openid" jdbcType="VARCHAR" property="openid" />
+    <result column="subscribe" jdbcType="CHAR" property="subscribe" />
+    <result column="subscribe_scene" jdbcType="VARCHAR" property="subscribeScene" />
+    <result column="oper_time" jdbcType="TIMESTAMP" property="operTime" />
+    <result column="create_time" jdbcType="TIMESTAMP" property="createTime" />
+    <result column="remark" jdbcType="LONGVARCHAR" property="remark" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--@mbg.generated-->
+    id, user_id, unionid, openid, subscribe, subscribe_scene, oper_time, create_time, 
+    remark
+  </sql>
+</mapper>
